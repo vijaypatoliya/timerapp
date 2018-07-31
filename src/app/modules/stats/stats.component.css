@@ -1,0 +1,16 @@
+.stats-container {
+    padding: 0;
+    min-height: 500px;
+  }
+
+  .stats-placeholder {
+    padding: 5% 30%;
+  }
+
+  .view-toolbar-container {
+    border-bottom: 1px solid #d8d8d8;
+  }
+  
+  .view-toolbar-container span {
+    font-size: 20px;
+  }

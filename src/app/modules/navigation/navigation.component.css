@@ -1,0 +1,31 @@
+.user-nav ul {
+    list-style: none;
+    margin: 0px;
+    padding:0px;
+  }
+  
+  .user-nav ul li {
+    display: inline;
+    float: left;
+  }
+  
+  .is-active {
+    background: #f9f9f9 !important;
+    color: #7302ad !important;
+    transition: all 0.2s;
+  }
+  
+  .user-nav ul li a {
+    font-size: 20px;
+    display: block;
+    width: 100%;
+    background: #00000052;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .user-nav ul li a:hover {
+    background: #0000007d;
+  }

@@ -1,0 +1,76 @@
+.wm-logo {
+    display: block;
+    margin: 10% auto 0;
+    border-radius: 0;
+    width: 160px;
+}
+.need-help {
+    margin-top: 10px;
+}
+.new-account {
+    display: block;
+    margin-top: 10px;
+}
+.vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .explain-container {
+    color: #ffffff;
+  }
+
+  .explain-container-bottom {
+    color: #ffffff;
+    margin-bottom:20px;
+  }
+
+  .explanation {
+    padding: 40px;
+    font-size: 14px;
+  }
+
+  .form-container {
+    background: #0606063d;
+    padding: 30px;
+    margin-bottom: 10px;
+  }
+
+  .form-container input {
+    border-radius: 0px;
+    border: none;
+    height: 60px;
+    font-size: 25px;
+    color: #6203a5;
+  }
+
+  .form-container button {
+    border-radius: 0px;
+    height: 60px;
+    background: #5a188c;
+    border: 0px;
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .form-container button:hover,  .form-container button:active, .form-container button:focus {
+      outline:none;
+  }
+
+  .login-links {
+      color:#ffffff;
+      text-decoration: underline;
+      margin: 0 35px;
+  }
+
+  .invalid {
+    border: 3px solid #fd3300 !important;
+  }
+
+  /* .wm, .tm {
+    font-size: 40px;
+  } */

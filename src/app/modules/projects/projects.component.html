@@ -1,0 +1,78 @@
+<div class="page-container">
+
+  <!-- projects toolbar -->
+  <div class="toolbar-container">
+      <div class="col-sm-6 text-left">
+          <a class="add-button noselect" (click)="addState = !addState">
+                <small *ngIf="addState">
+                    <i class="fa fa-minus-circle" aria-hidden="true"></i> 
+                <span>Add</span>
+              </small>
+              <small *ngIf="!addState">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> 
+                <span>Add</span>
+              </small>
+              </a>
+      </div>
+      <div class="col-sm-6 text-right">
+          <input type="text" class="search" (input)="onSearchChange($event.target.value)" placeholder="search...">
+      </div>
+      <div class="clearfix"></div>
+  </div>
+
+  <!-- add projects form -->
+  <div *ngIf="addState" class="overlay" (click)="addState = false"></div>
+  <div *ngIf="addState" class="project col-lg-4 col-md-6 col-sm-8" [@fadeIn]="''">
+      <form class="project-form" [formGroup]="projectForm" (ngSubmit)="addProject()">
+        <div class="project-header">
+            <h3># add project</h3>
+        </div>
+        <div class="project-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="text" name="projectName" class="form-control" placeholder="Project Name" formControlName="projectName" autofocus [class.invalid]="projectForm.controls.projectName.invalid && projectForm.controls.projectName.dirty"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="text" name="projectOwner" class="form-control" placeholder="Project Owner" formControlName="projectOwner" [class.invalid]="projectForm.controls.projectOwner.invalid && projectForm.controls.projectOwner.dirty"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <textarea type="text" name="projectDescription" class="form-control" placeholder="Project description" formControlName="projectDescription" rows="5" [class.invalid]="projectForm.controls.projectDescription.invalid && projectForm.controls.projectDescription.dirty"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text" name="projectTags" class="form-control" placeholder="Project Tags (comma separated)" formControlName="projectTags" [class.invalid]="projectForm.controls.projectTags.invalid && projectForm.controls.projectTags.dirty" />
+                </div>
+                <div class="col-sm-6">
+                    <select name="projectCategory" class="form-control" id="projectCategory" formControlName="projectCategory" [class.invalid]="projectForm.controls.projectCategory.invalid && projectForm.controls.projectCategory.dirty">
+                            <option value="">Select Category</option>
+                            <option value="ecommerce">Ecommerce</option>
+                            <option value="tracking">Tracking</option>
+                            <option value="landing pages">Landing pages</option>
+                            <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="project-footer-add">
+            <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="projectForm.invalid">Save project</button>
+          <span class="clearfix"></span>
+        </div>
+      </form>
+  </div>
+
+  <!-- show projects list -->
+  <div class="list-container">
+    <img src="./assets/spinner.gif" *ngIf="loader" class="spinner">
+    <ul class="projects-list">
+      <li *ngFor="let project of projects | projectsFilter:searchTerm">
+        <project class="col-sm-3" [details]="project"></project>
+      </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</div>

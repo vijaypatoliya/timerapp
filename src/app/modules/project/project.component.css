@@ -1,0 +1,83 @@
+.project {
+  background: #600091;
+  color: #ffffff;
+  width: 100%;
+  float: left;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  }
+
+  .project-header {
+    font-size: 20px;
+    background: #00000052;
+    padding: 10px;
+  }
+
+  .project-header a {
+    font-size: 15px;
+    color: #ffffff;
+  }
+
+  .project-header .title {
+    font-size: 20px;
+    text-decoration: none;
+  }
+
+  .project-header input {
+    font-size: 12px;
+    height: 28px;
+    border-radius: 0px;
+    border: none;
+    outline: none;
+  }
+
+  .project-body textarea {
+    height: 60px;
+    border-radius: 0px;
+    border: 1px solid #bebebe;
+    outline: none;
+  }
+
+  .project-footer-add button {
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    color: #ffffff;
+    padding: 0px;
+    font-size: 13px;
+    background: none;
+    height: 37px;
+  }
+
+  .project-body {
+    padding: 10px;
+    background: #efeeee;
+    color: #383838;
+    height: 135px;
+    overflow: hidden;
+  }
+
+  .project-footer {
+    font-size: 12px;
+    background: #00000052;
+    padding: 10px;
+  }
+
+  .project-footer-add {
+    font-size: 12px;
+    background: #00000052;
+  }
+
+  .project-tags {
+    padding: 0px 5px;
+    display: block;
+    float: left;
+    background: #ffffff;
+    color: #410062;
+    margin-right: 5px;
+  }
+
+  .project-footer small {
+    font-size: 11px !important;
+  }

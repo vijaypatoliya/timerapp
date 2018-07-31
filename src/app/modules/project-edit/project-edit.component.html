@@ -1,0 +1,150 @@
+<div class="page-container">
+  <!-- projects toolbar -->
+  <div class="toolbar-container">
+      <div class="col-sm-2 text-left">
+          <a class="add-button noselect" (click)="updateState = !updateState">
+                <small *ngIf="updateState">
+                    <i class="fa fa-minus-circle" aria-hidden="true"></i> 
+                <span>Update</span>
+              </small>
+              <small *ngIf="!updateState">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> 
+                <span>Update</span>
+              </small>
+          </a>
+        </div>
+        <div class="col-sm-2">
+            <a routerLink="./lists" class="add-button noselect" [routerLinkActive]="'is-active'">
+                <small>
+                    <i class="fa fa-list" aria-hidden="true"></i>
+                  <span>Lists</span>
+                </small>
+              </a>
+        </div>
+        <div class="col-sm-2">
+            <a routerLink="./tasks" class="add-button noselect" [routerLinkActive]="'is-active'">
+                <small>
+                    <i class="fa fa-tasks" aria-hidden="true"></i>
+                    <span>Tasks</span>
+                </small>
+            </a>
+        </div>
+      <div class="col-sm-2">
+            <a routerLink="./stats" class="add-button noselect" [routerLinkActive]="'is-active'">
+                <small>
+                    <i class="fa fa-pie-chart" aria-hidden="true"></i>
+                  <span>Stats</span>
+                </small>
+              </a>
+        </div>
+      <div class="col-sm-2">
+          <a class="add-button noselect" (click)="openModal(template)">
+            <small>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+              <span>Remove</span>
+            </small>
+          </a>
+          <ng-template #template>
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Delete project</h4>
+            </div>
+            <div class="modal-body text-left">
+                <p>Are you sure do you want to delete <i>{{project.projectName}}</i> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+                <button type="button" class="btn btn-default" (click)="decline()" >No</button>
+            </div>
+          </ng-template>
+      </div>
+            <div class="col-sm-2">
+                <a class="add-button noselect" (click)="goBack()">
+                    <small>
+                        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                        <span>Back</span>
+                    </small>
+                </a>
+            </div>
+      <div class="clearfix"></div>
+  </div>
+
+  <!-- update project form -->
+  <div *ngIf="updateState" class="overlay" (click)="updateState = false"></div>
+  <div *ngIf="updateState" class="project col-lg-4 col-md-6 col-sm-8" [@fadeIn]="''">
+      <form class="project-form" [formGroup]="projectForm" (ngSubmit)="updateProject()">
+        <div class="project-header">
+            <h3># update project</h3>
+        </div>
+        <div class="project-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="text" name="projectName" class="form-control" placeholder="Project Name" formControlName="projectName" autofocus [class.invalid]="projectForm.controls.projectName.invalid && projectForm.controls.projectName.dirty"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="text" name="projectOwner" class="form-control" placeholder="Project Owner" formControlName="projectOwner" [class.invalid]="projectForm.controls.projectOwner.invalid && projectForm.controls.projectOwner.dirty"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <textarea type="text" name="projectDescription" class="form-control" placeholder="Project description" formControlName="projectDescription" rows="5" [class.invalid]="projectForm.controls.projectDescription.invalid && projectForm.controls.projectDescription.dirty"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text" name="projectTags" class="form-control" placeholder="Project Tags (comma separated)" formControlName="projectTags" [class.invalid]="projectForm.controls.projectTags.invalid && projectForm.controls.projectTags.dirty" />
+                </div>
+                <div class="col-sm-6">
+                    <select name="projectCategory" class="form-control" id="projectCategory" formControlName="projectCategory" [class.invalid]="projectForm.controls.projectCategory.invalid && projectForm.controls.projectCategory.dirty">
+                            <option value="">Select Category</option>
+                            <option value="ecommerce">Ecommerce</option>
+                            <option value="tracking">Tracking</option>
+                            <option value="landing pages">Landing pages</option>
+                            <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="project-footer-add">
+            <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="projectForm.invalid">Save project</button>
+          <span class="clearfix"></span>
+        </div>
+      </form>
+  </div>
+
+  <!-- show projects list -->
+  <div class="project-container">
+        <div class="col-sm-4">
+            <h2>{{project.projectName}}</h2>
+            <img src="./assets/project.jpg" alt="placeholder" class="project-image">
+            <p>{{project.projectDescription}}</p>
+            <div class="clearfix"></div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4>Owner</h4>
+                    <div class="project-info-box">
+                        {{project.projectOwner}}
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h4>Category</h4>
+                    <div class="project-info-box">
+                        {{project.projectCategory}}
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h4>Tags</h4>
+                    <div class="project-info-box">
+                        {{project.projectTags}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 child-views">
+            <router-outlet></router-outlet>
+        </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

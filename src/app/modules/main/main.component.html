@@ -1,0 +1,16 @@
+    <!-- dashboard header -->
+    <header [time]="seconds"></header>
+    <!-- dashboard navigation -->
+    <navigation [userAccess]="usersService.logged.userType"></navigation>
+    
+    <!-- dashboard body -> to add child states inside -->
+    <div class="main-body">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- dashboard footer -> to convert into component -->
+    <div class="main-footer">
+        <div class="col-sm-12">
+          <p>task management # work meter # 2018 </p>
+        </div>
+        <div class="clearfix"></div>
+    </div>

@@ -1,0 +1,15 @@
+<div class="toast-container" [ngClass]="toastPosition">
+        <div *ngFor="let toast of toasts" class="toast-body" [ngClass]="toast?.type" [@fadeIn]="''">
+                <div class="icon">
+                        <i *ngIf ="toast?.type == 'success'" class="fa fa-check" aria-hidden="true"></i>
+                        <i *ngIf ="toast?.type == 'error'" class="fa fa-exclamation" aria-hidden="true"></i>
+                        <i *ngIf ="toast?.type == 'info'"class="fa fa-info" aria-hidden="true"></i>
+                </div>
+                <div class="message" aria-hidden="true">
+                        {{toast?.message}}
+                </div>
+                <div class="pull-right">{{count}}</div>
+                <div class="clearfix"></div>
+        </div>
+</div>
+

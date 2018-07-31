@@ -1,0 +1,33 @@
+.main-header {
+    min-height: 75px;
+  }
+  
+  .main-header h3{
+    line-height: 30px;
+    font-size: 50px;
+    color: #ffffff;
+  }
+  
+  .tm-logo-small {
+    padding: 15px 0px;
+    margin-right: 5px;
+    float: right;
+    cursor: pointer;
+  }
+
+  .work-status {
+    padding: 30px 0 10px 0;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .leave {
+    color: #ffffff;
+    padding: 20px;
+    font-size: 35px;
+    cursor: pointer;
+  }
+
+  .work-status span {
+    font-size: 25px;
+  }

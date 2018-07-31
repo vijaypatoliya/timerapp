@@ -1,0 +1,73 @@
+.task-box {
+  border-bottom: 1px solid #bebebe;
+  padding-bottom: 10px;
+}
+
+.box-heading {
+  padding: 10px;
+  margin: 10px 0;
+  background: #4e4e4e;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.new {
+  color: #585858 !important;
+}
+
+.started {
+  color: #29b302 !important;
+}
+
+.paused {
+  color: #fbae00 !important;
+}
+
+.box-heading i {
+  margin-right:5px;
+}
+
+.task-info ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.task-info ul li small {
+  font-weight: bold;
+}
+
+.task-info ul li span {
+  color: #797979;
+  padding: 0px 5px;
+}
+
+.task-buttons {
+  display: block;
+  color: #585858;
+  font-size: 40px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.start {
+  color: #29b302;
+}
+
+.pause {
+  color: #fbae00;
+}
+
+.task-links {
+  font-size: 15px;
+  font-weight: bold;
+  color: #7b7b7b;
+  display: block;
+  padding: 20px 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.over span {
+  color: #dd0000 !important;
+}

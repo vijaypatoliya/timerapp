@@ -1,0 +1,63 @@
+<div class="sub-page-container">
+
+    <!-- lists toolbar -->
+    <div class="row view-toolbar-container">
+        <div class="col-sm-6">
+            <h2>Project Lists</h2>
+        </div>
+        <div class="col-sm-6 text-right">
+          <a class="add-button noselect" (click)="addState = !addState">
+                <small *ngIf="addState">
+                    <i class="fa fa-minus-circle" aria-hidden="true"></i> 
+                <span>Create new list</span>
+              </small>
+              <small *ngIf="!addState">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> 
+                <span>Create new list</span>
+              </small>
+              </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+  <!-- add list form -->
+  <div *ngIf="addState" class="list">
+      <form class="list-form" [formGroup]="listForm" (ngSubmit)="addList()">
+        <div class="list-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <input type="text" name="listName" class="form-control" placeholder="List Name" formControlName="listName" autofocus [class.invalid]="listForm.controls.listName.invalid && listForm.controls.listName.dirty"/>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" name="listDescription" class="form-control" placeholder="List description" formControlName="listDescription" [class.invalid]="listForm.controls.listDescription.invalid && listForm.controls.listDescription.dirty">
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="listForm.invalid">Add List</button>
+                  <span class="clearfix"></span>
+                </div>
+            </div>
+        </div>
+      </form>
+  </div>
+
+  <!-- show lists -->
+  <div class="list-container">
+        <img src="./assets/spinner.gif" *ngIf="loader" class="spinner">
+        <ul class="lists-list">
+        <li *ngFor="let list of lists | listsFilter:searchTerm">
+            <div class="list-body">
+                    <div class="col-xs-10 text-left">
+                        <span>{{list.listName}} - <small><i>{{list.listDescription}}</i></small></span>
+                    </div>
+                    <div class="col-xs-2 text-center list-options">
+                        <div class="col-xs-12 text-right">
+                            <a href="" [routerLink]="['./', list._id]"><i class="fa fa-edit"></i> Edit</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+            </div>
+        </li>
+        </ul>
+    <div class="clearfix"></div>
+  </div>
+</div>

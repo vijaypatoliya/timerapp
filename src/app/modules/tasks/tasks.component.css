@@ -1,0 +1,200 @@
+.tasks-container {
+  padding: 0;
+}
+
+.task-container {
+  position: relative;
+}
+
+.tasks-list {
+  width: 100%;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
+}
+
+.tasks-list li .not-found {
+  display: block;
+  float: left;
+  padding: 5px 15px;
+  font-size: 20px;
+  color: #ffffff;
+  background: #4a0170;
+  margin-top:10px;
+  margin-left: 15px;
+}
+
+/* add task form */
+.task {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+  z-index: 2000;
+  background: #340051;
+  padding-bottom: 10px;
+}
+
+.task-header {
+  color: #ffffff;
+}
+
+.task-header a {
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.task-body input {
+  border-radius: 0px;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.task-body textarea {
+  border-radius: 0px;
+  border: 1px solid #bebebe;
+  outline: none;
+  margin-bottom:10px;
+}
+
+.task-body select {
+  margin-bottom:10px;
+  border-radius: 0px;
+  outline: none;
+  border: none;
+}
+
+.task-footer-add button {
+  border: none;
+  outline: none;
+  border-radius: 0px;
+  color: #ffffff;
+  padding: 0px;
+  background: #00c10f;
+  height: 40px;
+}
+
+.task-body {
+  color: #383838;
+}
+
+.task-footer {
+  font-size: 12px;
+  background: #00000052;
+  padding: 10px;
+}
+
+.task-footer-add {
+  font-size: 12px;
+  background: #00000052;
+}
+
+.task-tags {
+  padding: 0px 5px;
+  display: block;
+  float: left;
+  background: #ffffff;
+  color: #410062;
+  margin-right: 5px;
+}
+
+.search {
+  padding: 10px 10px;
+  outline: none;
+  border: none;
+  box-shadow: inset 0 0 27px -10px #000000;
+  -moz-box-shadow:    inset 0 0 27px -10px #000000;
+  -webkit-box-shadow: inset 0 0 27px -10px #000000;
+}
+
+.tasks .bottom-spacing {
+  margin-bottom:10px;
+}
+
+.btn-check {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.btn-check input {
+  margin: 10px 5px;
+}
+
+.form-control[disabled], fieldset[disabled] .form-control {
+  background: #b3b3b3;
+}
+
+.tsk-body {
+  display:block;
+  padding: 10px;
+  background: #45006c;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.other {
+  font-weight: normal;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 0px;
+  margin-right: 10px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.new {
+  font-weight: normal;
+  background: #ffffff;
+  color: #585858;
+  border-radius: 0px;
+  margin-right: 10px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.started {
+  font-weight: normal;
+  background: #2ab300;
+  color: #ffffff;
+  border-radius: 0px;
+  margin-right: 10px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.paused {
+  font-weight: normal;
+  background: #fbae00;
+  color: #ffffff;
+  border-radius: 0px;
+  margin-right: 10px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.list-options a {
+  color: #ffffff;
+  font-size: 20px;
+  padding: 0 0 0 15px;
+}
+
+.status-title {
+  padding: 5px;
+}
+
+.is-active-body {
+  background: #4e4e4e url(/assets/arright.png) no-repeat right center;
+  margin-right: -15px;
+}
+
+.top-ten {
+  margin-top:10px;
+}

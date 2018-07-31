@@ -1,0 +1,9 @@
+.error-body {
+  display: block;
+  color: #ffffff;
+  background: #ff0000;
+  margin-right: 10px;
+  margin-top:5px;
+  padding: 10px;
+  font-size: 14px;
+}

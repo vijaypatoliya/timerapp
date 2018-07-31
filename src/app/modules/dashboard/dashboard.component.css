@@ -1,0 +1,36 @@
+.dashboard-container {
+}
+
+.overlay {
+  position: absolute;
+  width:100%;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index: 9990;
+  background: #02020242;
+}
+
+.dashboard-side-menu {
+  position: fixed;
+  width: 300px;
+  top: 0px;
+  right: 0px;
+  bottom:0px;
+  background: #000000d1;
+  min-height: 700px;
+  z-index: 9999;
+}
+
+.main-body {
+  min-height: 600px;
+  background: #ffffff;
+  margin: 0px 0px 15px 0;
+}
+
+.main-footer {
+  color: #ffffff;
+  font-size:13px;
+  text-align: center;
+}

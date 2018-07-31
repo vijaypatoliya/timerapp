@@ -1,0 +1,77 @@
+<div class="task col-lg-6 col-md-8 col-sm-10" [@fadeIn]="''">
+    <form class="task-form" [formGroup]="updateTaskForm" (ngSubmit)="updateTask()">
+        <div class="task-header">
+            <h3># update task</h3>
+        </div>
+        <div class="task-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="text" name="taskName" class="form-control" placeholder="Task Name" formControlName="taskName" autofocus [class.invalid]="updateTaskForm.controls.taskName.invalid && updateTaskForm.controls.taskName.dirty"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <textarea type="text" name="taskDescription" class="form-control" placeholder="Task description" formControlName="taskDescription"
+                        rows="5" [class.invalid]="updateTaskForm.controls.taskDescription.invalid && updateTaskForm.controls.taskDescription.dirty"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <select name="taskProject" class="form-control" id="taskProject" formControlName="taskProject" [class.invalid]="updateTaskForm.controls.taskProject.invalid && updateTaskForm.controls.taskProject.dirty">
+                        <option value="">Select Project</option>
+                        <option *ngFor="let project of projects" value="{{project._id}}">
+                            {{project.projectName}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <select name="taskList" class="form-control" id="taskList" formControlName="taskList" [class.invalid]="updateTaskForm.controls.taskList.invalid && updateTaskForm.controls.taskList.dirty">
+                        <option value="" disabled selected>Select List</option>
+                        <option *ngFor="let list of lists" value="{{list._id}}">{{list.listName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <!-- <div class="col-sm-6">
+                    <select name="taskAssignedTo" class="form-control" id="taskAssignedTo" formControlName="taskAssignedTo" [class.invalid]="updateTaskForm.controls.taskAssignedTo.invalid && updateTaskForm.controls.taskAssignedTo.dirty">
+                        <option value="">Assign to</option>
+                        <option *ngFor="let user of users" value="{{user._id}}">{{user.userName}}</option>
+                    </select>
+                </div> -->
+                <div class="col-sm-12">
+                    <input class="form-control" placeholder="Task Deadline" ngx-mydatepicker
+                        name="taskDeadline" formControlName="taskDeadline" [options]="myOptions" #dp="ngx-mydatepicker" (click)="dp.toggleCalendar()"
+                        [class.invalid]="updateTaskForm.controls.taskDeadline.errors && updateTaskForm.controls.taskDeadline.dirty"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="btn-check noselect" for="taskScored">
+                        <input type="checkbox" id="taskScored" formControlName="taskScored"> Scored Task
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="col-sm-6">
+                    <select *ngIf="updateTaskForm.controls.taskScored.value" name="taskDifficulty" class="form-control task-body" id="taskDifficulty"
+                        formControlName="taskDifficulty">
+                        <option value="null" disabled selected>Select Difficulty</option>
+                        <option value="5">Easy</option>
+                        <option value="10">Normal</option>
+                        <option value="25">Hard</option>
+                        <option value="50">Insane</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="task-footer-add">
+            <div class="row">
+                <div class="col-sm-12">
+                    <button class="btn btn-lg btn-primary btn-block col-sm-10" type="submit" [disabled]="updateTaskForm.invalid">Update task</button>
+                </div>
+            </div>
+            <span class="clearfix"></span>
+        </div>
+    </form>
+</div>

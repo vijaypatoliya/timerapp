@@ -1,0 +1,38 @@
+<div class="lists-container">
+
+  <!-- lists toolbar -->
+  <div class="row view-toolbar-container">
+      <div class="col-sm-6">
+          <h2>Project List <small>- {{list.listName}}</small></h2>
+      </div>
+        <div class="col-sm-6 text-right">
+          <a class="add-button noselect" (click)="goBack()">
+            <small>
+                <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                <span>Back to lists</span>
+            </small>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+  </div>
+
+<!-- update list form -->
+<div class="list">
+    <form class="list-form" [formGroup]="listForm" (ngSubmit)="updateList()">
+      <div class="list-body">
+          <div class="row">
+              <div class="col-sm-4">
+                  <input type="text" name="listName" class="form-control" placeholder="List Name" formControlName="listName" autofocus [class.invalid]="listForm.controls.listName.invalid && listForm.controls.listName.dirty"/>
+              </div>
+              <div class="col-sm-4">
+                  <input type="text" name="listDescription" class="form-control" placeholder="List description" formControlName="listDescription" [class.invalid]="listForm.controls.listDescription.invalid && listForm.controls.listDescription.dirty">
+              </div>
+              <div class="col-sm-4">
+                  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="listForm.invalid">Update List</button>
+                <span class="clearfix"></span>
+              </div>
+          </div>
+      </div>
+    </form>
+</div>
+</div>

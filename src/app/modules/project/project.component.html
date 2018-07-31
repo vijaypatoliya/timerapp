@@ -1,0 +1,27 @@
+<!-- project component -->
+<div class="project">
+  <div class="project-header">
+      <div class="row">
+        <div class="col-sm-6">
+          <a [routerLink]="['./', details._id]" href="" class="title">{{details.projectName}}</a>
+        </div>
+        <div class="col-sm-6 text-right">
+          <a [routerLink]="['./', details._id]" href="" ><i class="fa fa-edit"></i></a>
+        </div>
+      </div>
+  </div>
+  <div class="project-body">
+    {{details.projectDescription | slice:0:380}}
+    <span *ngIf="details.projectDescription.length > 380">...</span>
+  </div>
+  <div class="project-footer">
+    <div class="row">
+      <div class="col-xs-6 text-left">
+        <small>#owner: <strong>{{details.projectOwner}}</strong></small>
+      </div>
+      <div class="col-xs-6 text-right">
+          <small>#category: <strong>{{details.projectCategory}}</strong></small>
+        </div>
+    </div>
+  </div>
+</div>

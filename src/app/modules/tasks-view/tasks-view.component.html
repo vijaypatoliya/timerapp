@@ -1,0 +1,136 @@
+<div class="sub-page-container">
+
+    <!-- task update form -->
+    <div *ngIf="updateState" class="overlay" (click)="updateState = false"></div>
+    <task-update-form (updated)="taskUpdated($event)" [task]="task" [projects]="projects" [list]="list" [users]="users" *ngIf="updateState">
+    </task-update-form>
+
+    <!-- task assign form -->
+    <div *ngIf="assignState" class="overlay" (click)="assignState = false"></div>
+    <task-assign-form (assigned)="taskAssigned($event)" [task]="task" [users]="users" *ngIf="assignState">
+    </task-assign-form>
+
+    <!-- task history list -->
+    <div *ngIf="historyState" class="overlay" (click)="historyState = false"></div>
+    <task-history [task]="task" *ngIf="historyState"></task-history>
+
+    <!-- task toolbar -->
+    <div class="row view-toolbar-container">
+        <div class="col-sm-4">
+            <h2>{{task.taskName}}</h2>
+        </div>
+        <div class="col-sm-8 text-center">
+            <div class="col-sm-3">
+                <a class="task-links noselect" (click)="updateState = !updateState; assignState = false; historyState = false">
+                        <i class="fa fa-edit" aria-hidden="true"></i> Edit
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a class="task-links noselect" (click)="assignState = !assignState; updateState = false; historyState = false">
+                    <i class="fa fa-exchange" aria-hidden="true"></i> Assign
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a class="task-links noselect" (click)="historyState = !historyState; assignState = false; updateState = false">
+                    <i class="fa fa-history" aria-hidden="true"></i> Activity
+                </a>
+            </div>
+            <div class="col-sm-3" *ngIf="task.taskStatus != 'done'">
+                <a *ngIf="!task.taskStarted" class="task-links noselect" (click)="updateStartedPaused()">
+                    <i class="fa fa-play start" aria-hidden="true"></i> Start
+                </a>
+                <a *ngIf="task.taskStarted" class="task-links noselect" (click)="updateStartedPaused()">
+                    <i class="fa fa-pause pause" aria-hidden="true"></i> Pause
+                </a>
+            </div>
+            <div class="col-sm-3" *ngIf="task.taskStatus == 'done'">
+                <a *ngIf="!task.taskStarted" class="task-links noselect" (click)="markAsDone()">
+                    <i class="fa fa-check start" aria-hidden="true"></i> Mark as Done
+                </a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="task-body">
+        <div class="row task-box">
+            <div class="col-sm-3 task-info">
+                <div class="box-heading">
+                    <i class="fa fa-info" aria-hidden="true"></i> General</div>
+                <ul>
+                    <li>
+                        <small>Project:</small>
+                        <span>{{task.taskProjectName}}</span>
+                    </li>
+                    <li>
+                        <small>List:</small>
+                        <span>{{task.taskListName}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-3 task-info">
+                <div class="box-heading">
+                    <i class="fa fa-exchange" aria-hidden="true"></i> Assigned</div>
+                <ul>
+                    <li>
+                        <small>Created by:</small>
+                        <span>{{task.createdByName}}</span>
+                    </li>
+                    <li>
+                        <small>Last modified by:</small>
+                        <span>{{task.taskModifiedByName}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-3 task-info">
+                <div class="box-heading">
+                    <i class="fa fa-sliders" aria-hidden="true"></i> Status</div>
+                <ul>
+                    <li>
+                        <small>Status:</small>
+                        <span [ngClass]="setClass(task.taskStatus)">{{task.taskStatus}}</span>
+                    </li>
+                    <li>
+                        <small>Priority:</small>
+                        <span>Medium</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-3 task-info">
+                <div class="box-heading">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Deadline</div>
+                <ul>
+                    <li>
+                        <small>Deadline:</small>
+                        <span>{{task.taskDeadline | date:'dd-MM-yyyy'}}</span>
+                        <br />
+                        <div *ngIf="this.hours >= 0" class="over">
+                            <small>Over time:</small>
+                            <span>{{remaining}}</span>
+                        </div>
+                        <div *ngIf="this.hours < 0">
+                            <small>Remaining:</small>
+                            <span>{{remaining}}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row task-box">
+            <div class="col-sm-12 task-description">
+                <div class="box-heading">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i> Description</div>
+                <p>{{task.taskDescription}}</p>
+            </div>
+        </div>
+        <div class="row task-box">
+            <div class="col-sm-12 task-attachments">
+                <div class="box-heading">
+                    <i class="fa fa-paperclip" aria-hidden="true"></i> Attachments</div>
+                <p>Feature not implemented yet.</p>
+            </div>
+        </div>
+        <div class="row task-box">
+            <task-comments></task-comments>
+        </div>
+    </div>
+</div>

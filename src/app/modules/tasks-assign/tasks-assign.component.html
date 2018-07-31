@@ -1,0 +1,42 @@
+<div class="task col-lg-6 col-md-8 col-sm-10" [@fadeIn]="''">
+    <form class="task-form" [formGroup]="assignTaskForm" (ngSubmit)="assignTask()">
+        <div class="task-header">
+            <h3># assign task</h3>
+        </div>
+        <div class="task-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <select name="assignTo" class="form-control" id="assignTo" formControlName="assignTo" [class.invalid]="assignTaskForm.controls.assignTo.invalid && assignTaskForm.controls.assignTo.dirty">
+                        <option value="" disabled selected>Assign to</option>
+                        <option *ngFor="let user of users" value="{{user._id}}">{{user.userName}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <select name="assignStatus" class="form-control task-body" id="assignStatus"
+                        formControlName="assignStatus" [class.invalid]="assignTaskForm.controls.assignStatus.invalid && assignTaskForm.controls.assignStatus.dirty">
+                        <option value="null" disabled selected>Select status</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="update">Update</option>
+                        <option value="wtf">WTF</option>
+                        <option value="test">Test</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <textarea name="assignComment" class="form-control" placeholder="Add comment here" formControlName="assignComment" rows="3"
+                        [class.invalid]="assignTaskForm.controls.assignComment.invalid && assignTaskForm.controls.assignComment.dirty"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="task-footer-add">
+            <div class="row">
+                <div class="col-sm-12">
+                    <button class="btn btn-lg btn-primary btn-block col-sm-10" type="submit" [disabled]="assignTaskForm.invalid">Assign task</button>
+                </div>
+            </div>
+            <span class="clearfix"></span>
+        </div>
+    </form>
+</div>

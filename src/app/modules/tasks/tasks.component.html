@@ -1,0 +1,164 @@
+<div class="page-container">
+    <!-- tasks toolbar -->
+    <div class="toolbar-container">
+        <div class="col-sm-2 text-left">
+            <a class="add-button noselect" (click)="addState = !addState">
+                <small *ngIf="addState">
+                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                    <span>Add</span>
+                </small>
+                <small *ngIf="!addState">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    <span>Add</span>
+                </small>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a routerLink="./completed" class="add-button noselect" [routerLinkActive]="'is-active'">
+                <small>
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                    <span>Completed</span>
+                </small>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a routerLink="./assigned" class="add-button noselect" [routerLinkActive]="'is-active'">
+                <small>
+                    <i class="fa fa-share-square" aria-hidden="true"></i>
+                    <span>Assigned</span>
+                </small>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a routerLink="./help" class="add-button noselect">
+                <small>
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                    <span>Help</span>
+                </small>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a routerLink="./score" class="add-button noselect">
+                <small>
+                    <i class="fa fa-trophy" aria-hidden="true"></i>
+                    <span>Score</span>
+                </small>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <!-- add tasks form -->
+    <div *ngIf="addState" class="overlay" (click)="addState = false"></div>
+    <div *ngIf="addState" class="task col-lg-4 col-md-6 col-sm-8" [@fadeIn]="''">
+        <form class="task-form" [formGroup]="taskForm" (ngSubmit)="addTask(false)">
+            <div class="task-header">
+                <h3># add task</h3>
+            </div>
+            <div class="task-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" name="taskName" class="form-control" placeholder="Task Name" formControlName="taskName" autofocus [class.invalid]="taskForm.controls.taskName.invalid && taskForm.controls.taskName.dirty"
+                        />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <textarea type="text" name="taskDescription" class="form-control" placeholder="Task description" formControlName="taskDescription"
+                            rows="5" [class.invalid]="taskForm.controls.taskDescription.invalid && taskForm.controls.taskDescription.dirty"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <select name="taskProject" class="form-control" id="taskProject" formControlName="taskProject" [class.invalid]="taskForm.controls.taskProject.invalid && taskForm.controls.taskProject.dirty">
+                            <option value="">Select Project</option>
+                            <option *ngFor="let project of projects" value="{{project._id}}">
+                                {{project.projectName}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <select *ngIf="filteredLists.length" name="taskList" class="form-control" id="taskList" formControlName="taskList" [class.invalid]="taskForm.controls.taskList.invalid && taskForm.controls.taskList.dirty">
+                            <option value="" disabled selected>Select List</option>
+                            <option *ngFor="let list of filteredLists" value="{{list._id}}">{{list.listName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <select name="taskAssignedTo" class="form-control" id="taskAssignedTo" formControlName="taskAssignedTo" [class.invalid]="taskForm.controls.taskAssignedTo.invalid && taskForm.controls.taskAssignedTo.dirty">
+                            <option value="">Assign to</option>
+                            <option *ngFor="let user of users" value="{{user._id}}">{{user.userName}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <input *ngIf="taskForm.controls.taskAssignedTo.value" class="form-control" placeholder="Task Deadline" ngx-mydatepicker name="taskDeadline"
+                            formControlName="taskDeadline" [options]="myOptions" #dp="ngx-mydatepicker" (click)="dp.toggleCalendar()"
+                            [class.invalid]="taskForm.controls.taskDeadline.errors && taskForm.controls.taskDeadline.dirty" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="btn-check noselect" for="taskScored">
+                            <input type="checkbox" id="taskScored" formControlName="taskScored"> Scored Task
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="col-sm-6">
+                        <select *ngIf="taskForm.controls.taskScored.value" name="taskDifficulty" class="form-control task-body" id="taskDifficulty"
+                            formControlName="taskDifficulty">
+                            <option value="">Select Difficulty</option>
+                            <option value="5">Easy</option>
+                            <option value="10">Normal</option>
+                            <option value="25">Hard</option>
+                            <option value="50">Insane</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="task-footer-add">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <button class="btn btn-lg btn-primary btn-block col-sm-10" type="submit" [disabled]="taskForm.invalid">Add task</button>
+                    </div>
+                    <div class="col-sm-2">
+                        <button [disabled]="!taskForm.controls.taskName.value" class="btn btn-lg btn-primary btn-block col-sm-10" type="button" (click)="addTask(true)">Draft</button>
+                    </div>
+                </div>
+                <span class="clearfix"></span>
+            </div>
+        </form>
+    </div>
+
+    <!-- show tasks list -->
+    <div class="task-container">
+        <div class="col-sm-4">
+            <img src="./assets/spinner.gif" *ngIf="loader" class="spinner top-ten">
+            <ul class="tasks-list">
+                <li *ngIf="tasks.length == 0 && !loader">
+                    <div class="tsk-body">
+                        <span>No tasks in the list...</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+                <li *ngFor="let task of tasks">
+                    <a [routerLink]="['./', task._id]" class="tsk-body" [routerLinkActive]="'is-active-body'">
+                        <div class="col-xs-8 status-title text-left">
+                            <span class="badge" [ngClass]="setClass(task.taskStarted, task.taskStatus)"> 
+                                {{task.taskStatus}}
+                            </span>
+                            <span>{{task.taskName}}</span>
+                        </div>
+                        <div class="col-xs-4 list-options">
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-8 child-views">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

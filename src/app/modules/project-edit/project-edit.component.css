@@ -1,0 +1,98 @@
+/* add project form */
+.project {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    z-index: 2000;
+    background: #340051;
+    padding-bottom: 10px;
+  }
+  
+  .project-header {
+    color: #ffffff;
+  }
+  
+  .project-header a {
+    font-size: 15px;
+    color: #ffffff;
+  }
+  
+  .project-body input {
+    border-radius: 0px;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+  }
+  
+  .project-body textarea {
+    border-radius: 0px;
+    border: 1px solid #bebebe;
+    outline: none;
+    margin-bottom:10px;
+  }
+  
+  .project-body select {
+    border-radius: 0px;
+    outline: none;
+    border: none;
+  }
+  
+  .project-footer-add button {
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    color: #ffffff;
+    padding: 0px;
+    background: #00c10f;
+    height: 40px;
+  }
+  
+  .project-body {
+    color: #383838;
+  }
+  
+  .project-footer {
+    font-size: 12px;
+    background: #00000052;
+    padding: 10px;
+  }
+  
+  .project-footer-add {
+    font-size: 12px;
+    background: #00000052;
+  }
+  
+  .project-tags {
+    padding: 0px 5px;
+    display: block;
+    float: left;
+    background: #ffffff;
+    color: #410062;
+    margin-right: 5px;
+  }
+  
+  .search {
+    padding: 10px 10px;
+    outline: none;
+    border: none;
+    box-shadow: inset 0 0 27px -10px #000000;
+    -moz-box-shadow:    inset 0 0 27px -10px #000000;
+    -webkit-box-shadow: inset 0 0 27px -10px #000000;
+  }
+
+  .project-image {
+    width: 200px;
+    max-height: 200px;
+    float: left;
+    margin: 0 15px 15px 0px;
+  }
+
+  .project-info-box {
+    background: #50007b;
+    padding: 10px;
+    color: #ffffff;
+  }

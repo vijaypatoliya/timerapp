@@ -1,0 +1,46 @@
+<div class="vertical-center">
+  <div class="container login-container">
+    <div class="row">
+        <div class="explain-container" @explainerAnim>
+            <div class="col-sm-4 explanation">
+                <img class="wm-logo" src="assets/wm-logo.png" alt="">
+            </div>
+                <div class="col-sm-8 explanation">
+                    <h3 class="wm">Work Meter</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+    </div>
+    <div class="row">
+        <div class="form-container">
+            <form class="form-signup" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+                <div class="col-sm-5">
+                    <input type="text" name="userName" class="form-control" [class.invalid]="loginForm.controls.userName.invalid && loginForm.controls.userName.dirty" placeholder="Username" formControlName="userName" autofocus required>
+                </div>
+                <div class="col-sm-5">
+                    <input type="password" name="password" class="form-control" [class.invalid]="loginForm.controls.password.invalid && loginForm.controls.password.dirty" placeholder="Password" formControlName="password" required>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-block" type="submit" [disabled]="loginForm.invalid">Login</button>
+                </div>
+            </form>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-sm-12">
+            <a routerLink="/register" class="pull-right login-links">Create new account? </a>
+        </div>
+    </div>
+    <div class="row">
+            <div class="explain-container-bottom" @explainerAnim2>
+                <div class="col-sm-8 explanation2">
+                        <h3 class="tm">Task Management</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                    <div class="col-sm-4 explanation2">
+                        <img class="wm-logo" src="assets/tm-logo.png" alt="">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+        </div>
+  </div>
