@@ -1,2 +1,2 @@
 # timemeter
-Task Management App made with Angular 2+, NodeJS, Express and Mongo DB.
+Task Management App made with Angular 5, NodeJS, Express and Mongo DB.
